@@ -34,19 +34,19 @@ const NewProject = ({ onStop, addData, handleOpen }) => {
   return (
     <>
       <Modal ref={modal} buttonText="Close">
-        <h2 className="text-2xl my-4 text-stone-800">Invalid Input :(</h2>
-        <p className="text-stone-700 mb-4">
+        <h2 className={`text-2xl my-4 text-stone-800`}>Invalid Input :(</h2>
+        <p className={`text-stone-700 mb-4`}>
           Oops... Looks like you missed a field.
         </p>
         <p className="text-stone-700 mb-4">
           Please make sure you provide a value for every input field.
         </p>
       </Modal>
-      <div className="w-[34rem] mt-16 max-sm:mx-4 min-[800px]:pr-8">
-        <menu className="flex items-center justify-center my-4 gap-4">
+      <div className={`w-[34rem] mt-16 max-sm:mx-4 min-[800px]:pr-8`}>
+        <menu className={`flex items-center justify-center my-4 gap-4`}>
           <li>
             <button
-              className="text-stone-800 hover:text-stone-600"
+              className={`py-2 px-6 text-white font-bold rounded-md bg-[#a5adab] hover:bg-[#7d8b87]`}
               onClick={onStop}
             >
               Cancel

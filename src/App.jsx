@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NewProject from "./NewProject";
-import NoContent from "./NoContent";
+import NoContent from "./Home";
 import ProjectsSideBar from "./ProjectsSideBar";
 import SelectedProject from "./SelectedProject";
 import { RiMenu4Line } from "react-icons/ri";
@@ -55,7 +55,7 @@ function App() {
 
   const handleDeleteTasks = (id) => {
     setProjectSelected((prevSelected) => {
-      toast.error("Task Deleted!", {
+      toast.error("Task Deleted Successfuly!", {
         position: "top-right",
       });
       return {
@@ -116,13 +116,13 @@ function App() {
         ...prevSelected,
         selectedProjectsId: undefined,
         projects: prevSelected.projects.filter(
-          (project) => project.id !== prevSelected.selectedProjectsId,
+          (project) => project.id !== prevSelected.selectedProjectsId
         ),
       };
     });
   };
   const selectedList = projectSelected.projects.find(
-    (project) => project.id === projectSelected.selectedProjectsId,
+    (project) => project.id === projectSelected.selectedProjectsId
   );
 
   let content = (
@@ -149,9 +149,9 @@ function App() {
   }
   return (
     <>
-      <main className="h-screen my-8 flex gap-8 ">
+      <main className={`h-screen my-8 flex gap-8`}>
         <RiMenu4Line
-          className="text-3xl font-bold ml-6 absolute top-7 bg-stone-50 md:hidden"
+          className={`text-3xl font-bold ml-6 absolute top-7 bg-stone-50 md:hidden`}
           onClick={() => handleToogle()}
         />
         <ProjectsSideBar
@@ -160,8 +160,9 @@ function App() {
           onSelectedList={handleSelectedList}
           selectedListId={projectSelected.selectedProjectsId}
           classNames={
-            isOpen &&
-            " max-sm:left-0 max-sm:w-3/4 max-sm:transition-all max-sm:duration-300"
+            isOpen
+              ? "max-sm:left-0 max-sm:w-3/4 max-sm:transition-all max-sm:duration-300"
+              : ""
           }
           handleClose={() => handleToogle()}
         />
