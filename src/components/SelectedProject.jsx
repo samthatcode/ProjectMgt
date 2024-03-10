@@ -1,5 +1,5 @@
 import React from "react";
-import Tasks from "./Tasks/Tasks";
+import Tasks from "../Tasks/Tasks";
 import Modal from "./Modal";
 import { useRef } from "react";
 import Button from "./Button";
@@ -29,12 +29,12 @@ const SelectedProject = ({
       <Modal ref={modal} buttonText="No">
         <div className={`flex items-center justify-center mb-4 text-red-600`}>
           {" "}
-          <BsExclamationSquare className={`text-7xl`} />
+          <BsExclamationSquare className={`text-5xl`} />
         </div>
 
-        <p className={`text-xl`}>
-          Are you sure you want to delete - '
-          <span className={`font-bold`}>{project.title}</span>'?
+        <p className={`text-md md:text-xl`}>
+          Are you sure you want to delete - "
+          <span className={`font-bold`}>{project.title}</span>"?
         </p>
         <div className={`translate-y-16 flex w-1/2`}>
           <Button onClick={onDelete}>Yes</Button>
@@ -47,7 +47,7 @@ const SelectedProject = ({
               {project.title}
             </h1>
             <button
-              className={`text-stone-600 hover:text-stone-950`}
+         className={`hover:text-white text-stone-700 hover:bg-red-500 bg-gray-200 py-1 px-2 rounded-sm`}
               onClick={handleOpenModal}
             >
               Delete

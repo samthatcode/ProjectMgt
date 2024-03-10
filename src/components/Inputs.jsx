@@ -5,7 +5,7 @@ export const classes = `w-full p-1 border-b-2 bg-[#e4d5c7] text-stone-600 border
 const Inputs = forwardRef(function Inputs({ textarea, label, ...props }, ref) {
   return (
     <p className={`flex flex-col my-4 gap-1`}>
-      <label className={`text-sm uppercase font-bold text-[#27251f]`}>
+      <label className={`text-sm capitalize font-bold text-[#27251f]`}>
         {label}
       </label>
       {textarea ? (

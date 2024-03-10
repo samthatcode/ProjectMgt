@@ -1,5 +1,6 @@
 import React from "react";
 import { HiOutlinePlusSm } from "react-icons/hi";
+import { RiCloseLine } from "react-icons/ri";
 import { twMerge } from "tailwind-merge";
 
 const ProjectsSideBar = ({
@@ -15,21 +16,18 @@ const ProjectsSideBar = ({
       className={twMerge(
         `w-3/4 py-16 px-10 md:w-72 bg-stone-900 text-stone-50 rounded-r-xl max-sm:rounded-r-md max-sm:w-1/2 max-sm:fixed max-sm:top-0 max-sm:h-full max-sm:-left-full max-sm:transition-all max-sm:duration-300`,
         classNames
-      )}
-      onClick={handleClose}
+      )}   
     >
-      <button
-        className={`py-2 px-4 text-stone-800 rounded-md bg-stone-50 hover:bg-stone-100 relative bottom-11 right-7 mr-5 md:hidden`}
-        // onClick={handleClose}
-      >
-        Close
-      </button>
-      <h2 className={`mb-8 font-bold uppercase md:text-xl text-stone-200`}>
-        Your Projects
+      <RiCloseLine
+      className={`text-3xl font-bold ml-6 absolute top-5 right-5 bg-red-500 md:hidden`} 
+      onClick={handleClose}    
+      />     
+      <h2 className={`mb-8 font-bold uppercase text-sm md:text-xl text-stone-200`}>
+      Your Tasks
       </h2>
       <div>
         <button
-          className={`flex justify-center items-center gap-2 py-2 px-4 bg-stone-700 text-stone-400 text-xs md:text-base rounded-2xl hover:bg-stone-600 hover:text-stone-100`}
+          className={`flex justify-center items-center gap-2 py-2 px-4 bg-white text-stone-700 text-xs md:text-base rounded-md hover:font-bold`}
           onClick={onSubmit}
         >
           <HiOutlinePlusSm className={`text-xl`} />

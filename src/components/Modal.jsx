@@ -17,7 +17,7 @@ const Modal = forwardRef(({ children, buttonText }, ref) => {
       className={`backdrop:bg-stone-900/90 p-4 rounded-md shadow-md fixed max-sm:top-[46%] top-[45%] left-2/4 -translate-x-2/4 -translate-y-2/4 max-sm:w-[100%] transition-all`}
     >
       {children}
-      <form method="dialog" className={`text-right mt-7`}>
+      <form method="dialog" className={`text-right mt-8`}>
         <Button>{buttonText}</Button>
       </form>
     </dialog>,

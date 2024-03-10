@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import NewProject from "./NewProject";
-import NoContent from "./Home";
-import ProjectsSideBar from "./ProjectsSideBar";
-import SelectedProject from "./SelectedProject";
+import NewProject from "./components/NewProject";
+import NoContent from "./components/Home";
+import ProjectsSideBar from "./components/ProjectsSideBar";
+import SelectedProject from "./components/SelectedProject";
 import { RiMenu4Line } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles.css";
 
 function App() {
-  // const id = useId();
-  //let dataId = "ProjectSelected";
+ 
   const getData = window.localStorage.getItem("isOpen");
 
   const initialState = JSON.parse(localStorage.getItem("ProjectSelected")) || {
@@ -24,17 +23,21 @@ function App() {
   const [isOpen, setIsOpen] = useState(initialToggle);
   const [projectSelected, setProjectSelected] = useState(initialState);
 
+
   useEffect(() => {
     localStorage.setItem("ProjectSelected", JSON.stringify(projectSelected));
   }, [projectSelected]);
+
 
   useEffect(() => {
     localStorage.setItem("isOpen", JSON.stringify(isOpen));
   }, [isOpen]);
 
+
   const handleToogle = () => {
     setIsOpen((open) => !open);
   };
+
 
   const handleAddTasks = (text) => {
     setProjectSelected((prevSelected) => {
@@ -45,18 +48,19 @@ function App() {
         id: taskId,
       };
       const projectToast = `${newTasks.text} added`;
-      toast.success(projectToast, { position: "top-right" });
+      toast.success(projectToast, { position: "top-right", autoClose: 500 });
       return {
         ...prevSelected,
         tasks: [...prevSelected.tasks, newTasks],
       };
     });
   };
+  
 
   const handleDeleteTasks = (id) => {
     setProjectSelected((prevSelected) => {
       toast.error("Task Deleted Successfuly!", {
-        position: "top-right",
+        position: "top-right", autoClose: 500
       });
       return {
         ...prevSelected,
@@ -64,6 +68,7 @@ function App() {
       };
     });
   };
+
 
   const handleStartProjects = () => {
     setProjectSelected((prevSelected) => {
@@ -73,6 +78,7 @@ function App() {
       };
     });
   };
+
   const handleStopProjects = () => {
     setProjectSelected((prevSelected) => {
       return {
@@ -81,6 +87,8 @@ function App() {
       };
     });
   };
+
+
   const handleCreateNewProjects = (projectData) => {
     setProjectSelected((prevSelected) => {
       const newProject = {
@@ -88,7 +96,7 @@ function App() {
         id: Math.floor(Math.random() * 100) + 1,
       };
       const projectToast = `New Project added: ${newProject.title}`;
-      toast.success(projectToast, { position: "top-right" });
+      toast.success(projectToast, { position: "top-right", autoClose: 500 });
 
       return {
         ...prevSelected,
@@ -97,6 +105,7 @@ function App() {
       };
     });
   };
+
 
   const handleSelectedList = (id) => {
     setProjectSelected((prevSelected) => {
@@ -107,10 +116,11 @@ function App() {
     });
   };
 
+
   const handleDeleteItems = () => {
     setProjectSelected((prevSelected) => {
       toast.error("Project Deleted!", {
-        position: "top-right",
+        position: "top-right", autoClose: 500
       });
       return {
         ...prevSelected,
@@ -121,9 +131,12 @@ function App() {
       };
     });
   };
+
+
   const selectedList = projectSelected.projects.find(
     (project) => project.id === projectSelected.selectedProjectsId
   );
+
 
   let content = (
     <SelectedProject
@@ -136,6 +149,7 @@ function App() {
     />
   );
 
+
   if (projectSelected.selectedProjectsId === undefined) {
     content = <NoContent onSubmit={handleStartProjects} />;
   } else if (projectSelected.selectedProjectsId === null) {
@@ -147,6 +161,7 @@ function App() {
       />
     );
   }
+
   return (
     <>
       <main className={`h-screen my-8 flex gap-8`}>
